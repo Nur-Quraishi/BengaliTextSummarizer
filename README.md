@@ -1,4 +1,4 @@
-# BengaliTextSummarizer
+<h1 align='center'>Bengali Text Summarizer</h1>
 <h3 align='center'>Developed By: M. A. Nur Quraishi</h3>
 <h4 align='center'>Version- 1.0</h4>
 <p>
