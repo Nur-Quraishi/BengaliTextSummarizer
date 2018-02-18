@@ -100,19 +100,7 @@ public class MainApp extends JFrame{
 		generateSummary.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent e) {
-				String filePath = filePathJTextBox.getText();
-				String originalArticle;
-				if(!filePath.isEmpty() && filePath != null && !filePath.equals(""))
-				{
-					FileReader fileReader = new FileReader();
-					String fileContent = fileReader.readFile(filePath);
-					jTextArea.setText(fileContent);
-					originalArticle = fileContent;
-				}
-				else
-				{
-					originalArticle = jTextArea.getText();
-				}
+				String originalArticle = jTextArea.getText();
 				jTextArea1.setText(generateSummary(originalArticle));
 			}
 		});
@@ -205,13 +193,18 @@ public class MainApp extends JFrame{
 	
 	private void fileChooser(){
 		JFileChooser fChooser = new JFileChooser();
-		fChooser.setCurrentDirectory(new File("src/InputFiles/"));
 		int filechoosen = fChooser.showOpenDialog(new JFrame());
-		jTextArea.setText("");
-		jTextArea.setEditable(false);
 		
 		if(filechoosen == JFileChooser.APPROVE_OPTION){
 			filePathJTextBox.setText(fChooser.getSelectedFile().toString());
+			String filePath = filePathJTextBox.getText();
+			if(!filePath.isEmpty() && filePath != null && !filePath.equals("")){
+				FileReader fileReader = new FileReader();
+				String fileContent = fileReader.readFile(filePath);
+				jTextArea.setText(fileContent);
+				jTextArea.setEditable(false);
+				jTextArea1.setText("");
+			}
 		}
 	}
 	
